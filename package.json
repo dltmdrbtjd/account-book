@@ -22,10 +22,15 @@
     "@vue/compiler-sfc": "^3.0.0",
     "@vue/eslint-config-prettier": "^6.0.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-vue": "^7.0.0",
-    "prettier": "^2.2.1"
+    "eslint": "^8.3.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-prettier": "^3.4.1",
+    "eslint-plugin-vue": "^8.1.1",
+    "node-sass": "^6.0.1",
+    "prettier": "^2.5.0",
+    "sass-loader": "^12.3.0"
   },
   "eslintConfig": {
     "root": true,
@@ -46,5 +51,18 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "description": "## Project setup ``` yarn install ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dltmdrbtjd/account-book.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dltmdrbtjd/account-book/issues"
+  },
+  "homepage": "https://github.com/dltmdrbtjd/account-book#readme"
 }
