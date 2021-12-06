@@ -1,5 +1,3 @@
-module github.com/dltmdrbtjd/account-book/api
+module api
 
 go 1.17
-
-replace github.com/dltmdrbtjd/account-book/api => ../api
