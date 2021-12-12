@@ -3,8 +3,9 @@ package controllers
 import (
 	"api/models"
 	"api/services"
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 func FindAccounts(c *gin.Context) {
@@ -31,6 +32,8 @@ func CreateAccount(c *gin.Context) {
 		return
 	}
 
+	CreateCategory(input.Category)
+
 	newAccount := models.Account{Title: input.Title, Category: input.Category, Money: input.Money, CreateAt: input.CreateAt}
 	models.DB.Create(&newAccount)
 
@@ -53,12 +56,17 @@ func UpdateAccount(c *gin.Context) {
 	if input.Title == "" {
 		input.Title = account.Title
 	}
+
+	UpdateCategory(c, account.Category, input.Category)
+
 	if input.Category == "" {
 		input.Category = account.Category
 	}
 	if input.Money < 1 {
 		input.Money = account.Money
 	}
+
+	CreateCategory(input.Category)
 
 	models.DB.Model(&account).Updates(map[string]interface{}{"title": input.Title, "Category": input.Category, "Money": input.Money, "UpdateAt": input.UpdateAt})
 
