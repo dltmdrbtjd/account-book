@@ -30,7 +30,7 @@ func ConnectDatabase() {
 
 	println("connected on db")
 
-	db.AutoMigrate(&Account{})
+	db.AutoMigrate(&Account{}, &Category{})
 
 	DB = db
 }
