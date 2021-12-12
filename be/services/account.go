@@ -16,7 +16,7 @@ type UpdateAccountInput struct {
 	Title    string    `json:"title"`
 	Category string    `json:"category"`
 	Money    int32     `json:"money"`
-	UpdateAt time.Time `json:"create_at" binding:"required"`
+	UpdateAt time.Time `json:"update_at" binding:"required"`
 }
 
 func FindAccounts() []models.Account {
