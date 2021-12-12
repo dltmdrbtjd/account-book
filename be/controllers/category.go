@@ -15,10 +15,11 @@ func FindCategories(c *gin.Context) {
 }
 
 func CreateCategory(newCategory string) {
-	var category models.Category
+	category := services.CreateCategory()
 	if err := models.DB.Where("title = ?", newCategory).First(&category).Error; err != nil {
 		newCategory := models.Category{Title: newCategory, Count: 1}
 		models.DB.Create(&newCategory)
+		return
 	}
 
 	models.DB.Model(&category).Updates(map[string]interface{}{"count": category.Count + 1})
@@ -26,7 +27,7 @@ func CreateCategory(newCategory string) {
 
 func UpdateCategory(c *gin.Context, currentCategory string, newCategory string) {
 	if newCategory != "" {
-		var category models.Category
+		category := services.UpdateCategory()
 		if err := models.DB.Where("title = ?", currentCategory).First(&category).Error; err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": "Record not found"})
 			return
