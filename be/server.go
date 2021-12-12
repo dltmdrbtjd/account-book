@@ -17,6 +17,7 @@ func main() {
 	r.Use(middlewares.JSONMiddleware())
 
 	routers.AccountRoutes(r)
+	routers.Category(r)
 	if err := r.Run(":8081"); err != nil {
 		fmt.Printf("startup service failed, err:%v\n", err)
 	}
