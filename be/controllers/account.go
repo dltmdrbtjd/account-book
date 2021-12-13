@@ -80,6 +80,8 @@ func DeleteAccount(c *gin.Context) {
 		return
 	}
 
+	DeleteCategory(c, account.Category)
+
 	models.DB.Delete(&account)
 	c.JSON(http.StatusOK, gin.H{"message": "delete success"})
 }
