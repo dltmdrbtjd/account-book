@@ -1,17 +1,15 @@
 module.exports = {
+  root: true,
   env: {
-    browser: true,
-    es2021: true,
+    node: true,
   },
-  extends: ['plugin:vue/essential', 'airbnb-base', 'prettier', 'prettier/vue'],
+  extends: ['plugin:vue/essential', 'eslint:recommended', '@vue/prettier'],
   parserOptions: {
-    ecmaVersion: 12,
-    sourceType: 'module',
+    parser: 'babel-eslint',
   },
-  plugins: ['vue', 'prettier'],
   rules: {
-    'vue/multi-word-component-names': 0,
-    'import/no-unresolved': 0,
-    'vue/no-multiple-template-root': 0,
+    'no-console': 'off',
+    'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+    'vue/multi-word-component-names': 'off',
   },
 };
