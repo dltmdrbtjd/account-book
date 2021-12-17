@@ -5,9 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
     "core-js": "^3.6.5",
@@ -27,10 +28,12 @@
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-unit-jest": "^4.5.15",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",
     "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/test-utils": "^2.0.0-0",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.3",
     "eslint": "^6.8.0",
@@ -38,6 +41,8 @@
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-vue": "^8.2.0",
     "prettier": "^2.2.1",
+    "typescript": "~3.9.3",
+    "vue-jest": "^5.0.0-0",
     "vue-loader": "^16.8.3"
   },
   "eslintConfig": {
@@ -53,7 +58,18 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {},
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
   },
   "browserslist": [
     "> 1%",
