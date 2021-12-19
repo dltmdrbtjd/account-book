@@ -99,15 +99,18 @@
         >
       </li>
     </ul>
+    <StorybookTestVue />
   </div>
 </template>
 
 <script>
+import StorybookTestVue from './StorybookTest.vue';
 export default {
   name: 'HelloWorld',
   props: {
     msg: String,
   },
+  components: {StorybookTestVue},
 };
 </script>
 
