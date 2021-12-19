@@ -1,33 +1,57 @@
-const path = require('path');
-const miniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const path = require("path");
 module.exports = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    {
-      name: '@storybook/preset-scss',
-      options: {
-        cssLoaderOptions: {
-          modules: true,
-          localIdentName: '[name]__[local]--[hash:base64:5]',
+  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
+  framework: "@storybook/vue",
+
+  webpackFinal: async (config, { configType }) => {
+    // Use Sass loader for vuetify components
+    config.module.rules.push({
+      test: /\.sass$/,
+      use: [
+        "style-loader",
+        "vue-style-loader",
+        "css-loader",
+        {
+          loader: "sass-loader",
+          // Requires sass-loader@^9.0.0
+          options: {
+            // This is the path to your variables
+            additionalData: `@import '@/styles/variables.scss'`,
+          },
         },
-      },
-    },
-  ],
-  framework: '@storybook/vue3',
-  webpackFinal: async (config, {configType}) => {
+      ],
+      include: path.resolve(__dirname, "../"),
+    });
     config.module.rules.push({
       test: /\.scss$/,
       use: [
-        'style-loader',
-        'css-loader',
-        'sass-loader',
-        miniCssExtractPlugin.loader,
+        "style-loader",
+        "vue-style-loader",
+        "css-loader",
+        {
+          loader: "sass-loader",
+          // Requires sass-loader@^9.0.0
+          options: {
+            // This is the path to your variables
+            additionalData: `@import '@/styles/variables.scss';`,
+          },
+        },
       ],
-      include: path.resolve(__dirname, '../'),
+      include: path.resolve(__dirname, "../"),
     });
+
+    config.module.rules.push({
+      resolve: {
+        alias: {
+          "@": path.resolve(__dirname, "../src"),
+          vue: "vue/dist/vue.js",
+          vue$: "vue/dist/vue.esm.js",
+        },
+      },
+    });
+
+    // Return the altered config
     return config;
   },
 };

@@ -42,6 +42,14 @@
           >eslint</a
         >
       </li>
+      <li>
+        <a
+          href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-unit-jest"
+          target="_blank"
+          rel="noopener"
+          >unit-jest</a
+        >
+      </li>
     </ul>
     <h3>Essential Links</h3>
     <ul>
@@ -99,23 +107,20 @@
         >
       </li>
     </ul>
-    <StorybookTestVue />
   </div>
 </template>
 
 <script>
-import StorybookTestVue from './StorybookTest.vue';
 export default {
-  name: 'HelloWorld',
+  name: "HelloWorld",
   props: {
     msg: String,
   },
-  components: {StorybookTestVue},
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="scss">
 h3 {
   margin: 40px 0 0;
 }
@@ -128,6 +133,6 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: #c3c3c3;
 }
 </style>
