@@ -133,6 +133,6 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #c3c3c3;
+  color: $gray-color;
 }
 </style>
