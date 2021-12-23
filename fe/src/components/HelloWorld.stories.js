@@ -1,10 +1,10 @@
-import HelloWorld from "@/components/HelloWorld.vue";
+import HelloWorld from '@/components/HelloWorld.vue';
 export default {
-  title: "Example/HelloWorld",
+  title: 'Example/HelloWorld',
   component: HelloWorld,
 };
 
-const Template = (args, { argsTypes }) => ({
+const Template = () => ({
   components: { HelloWorld },
   template: `<HelloWorld />`,
 });
