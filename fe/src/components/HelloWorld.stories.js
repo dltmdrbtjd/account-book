@@ -4,9 +4,10 @@ export default {
   component: HelloWorld,
 };
 
-const Template = () => ({
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
   components: { HelloWorld },
-  template: `<HelloWorld />`,
+  template: `<HelloWorld v-bind="$props" title="HelloWorld"/>`,
 });
 
 export const Hello = Template.bind({});
